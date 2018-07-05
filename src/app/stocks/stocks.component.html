@@ -1,6 +1,20 @@
 <h2>Stocks</h2>
-<ul>
-    <li *ngFor='let stock of stocks'>
-        {{stock.name}}
+<ul class="stocks">
+    <li *ngFor='let stock of stocks' (click)="onSelected(stock)" class="stock === selectedStock">
+        <span class="badge">{{stock.id}}</span>
+        <span class="name"> {{stock.name}}</span>
     </li>
 </ul>
+
+<div *ngIf="selectedStock">
+    <h2>Details</h2>
+    <div class="stocks">
+        <span class="code"> {{selectedStock.code | uppercase}}</span>
+        <span class="name"> {{selectedStock.name}}</span>
+    </div>
+    <div>Price:
+        <span class="price">{{selectedStock.price | currency}}</span>
+    </div>
+    Sector:
+    <span>{{selectedStock.sector}}</span>
+</div>
